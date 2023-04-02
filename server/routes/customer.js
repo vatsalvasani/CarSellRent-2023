@@ -51,18 +51,18 @@ router.post("/email",(req,res)=>{
     let mailTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'Your Email',
-        pass: '%%%%%%%%%%%%'
+        user: 'YOUR EMAIL',
+        pass: 'YOUR PASSWORD'
     }
 });
  
 let mailDetails = {
-    from: 'Your Email',
+    from: 'YOUR EMAIL',
     to: req.body.to,
     subject: req.body.subject,
     html:`
     <div style="padding:10px;border-style:ridge">
-        <p>You Have New Requset For Your Car ${req.body.carName}.</p>
+        <p>You Have New Request For Your Car ${req.body.carName}.</p>
         <h1>Contact Details</h1>
         <ul>
             <li>First Name : ${req.body.firstname}</li>
@@ -70,8 +70,7 @@ let mailDetails = {
             <li>Email : ${req.body.email}</li>
             <li>Phone No. : ${req.body.phoneno}</li>
             <li>Message : ${req.body.description}</li>
-        </ul>
-        `
+        </ul>  `
 };
  
 mailTransporter.sendMail(mailDetails, function(err, data) {

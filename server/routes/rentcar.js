@@ -18,6 +18,7 @@ const cpUpload = upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2
 { name: 'image3', maxCount: 1 }, { name: 'image4', maxCount: 1 }])
 router.post("/",cpUpload,async(req,res)=>
 {
+    console.log(req.body)
     const rent_obj =new rentcarschema(
         {
             customer_id : req.body.customer_id,

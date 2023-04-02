@@ -19,6 +19,7 @@ const cpUpload = upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2
 
 router.post("/",cpUpload,async(req,res)=>
 {
+    console.log(req.files)
     const prop_obj = new sellcarschema(
         {
             customer_id : req.body.customer_id,
@@ -97,7 +98,8 @@ router.get("/car/:id",async(req,res)=>
 router.get("/:carname/:fuel_type/:cartype",async(req,res)=>
 {
     try{
-        const prop_obj = await sellcarschema.find({$or : [{carName : req.params.carname},{fuel_type : req.params.fuel_type},{category : req.params.cartype}],vehicle_availability : "True"})
+        const prop_obj = await sellcarschema.find({$or : [{carName : req.params.carname},
+            {fuel_type : req.params.fuel_type},{category : req.params.cartype}],vehicle_availability : "True"})
         res.json(prop_obj)
     }
     catch(e){

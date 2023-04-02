@@ -17,47 +17,40 @@ try{
 catch(e){console.log(e);}
 
 app.use(cors());
-app.use('/uploads',express.static('uploads'))
 
 const authrouter = require('./routes/auth')
 app.use('/auth', authrouter)
-
-const jwt = require('jsonwebtoken');
-const secretKey = '12abcd342hkjsd'; // You should store the secret key securely and not expose it in your code
-
-// Middleware function to check for a valid JWT token
-function authenticateToken(req, res, next) {
-  // Retrieve the JWT token from the request headers or cookies
-  const token = req.headers.authorization?.split(' ')[1] || req.cookies.token;
-  if (!token) {
-    // If the token is not present, return an unauthorized error response
-    return res.status(401).json({ message: 'Authentication required' });
-  }
-
-  try {
-    // Verify the token using the secret key
-    const decoded = jwt.verify(token, secretKey);
-    req.user = decoded; // Set the decoded token data as a property on the request object
-    next(); // Call the next middleware function or route handler
-  } catch (err) {
-    // If the token is invalid or expired, return an unauthorized error response
-    return res.status(401).json({ message: 'Invalid or expired token' });
-  }
-}
-
-
-
-const customerrouter = require('./routes/customer')
-app.use('/customer',authenticateToken, customerrouter)
-
+app.use('/uploads',express.static('uploads'))
 const sellcarrouter = require('./routes/sellcar')
-app.use('/sellcar',authenticateToken, sellcarrouter)
+app.use('/sellcar', sellcarrouter)
+
+const rentcarrouter = require('./routes/rentcar')
+app.use('/rentcar', rentcarrouter)
 
 const payrouter = require('./routes/payment')
 app.use('/payment',authenticateToken, payrouter)
 
-const rentcarrouter = require('./routes/rentcar')
-app.use('/rentcar',authenticateToken, rentcarrouter)
+const jwt = require('jsonwebtoken');
+const secretKey = '12abcd342hkjsd';
+
+function authenticateToken(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1] || req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ message: 'Authentication required' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, secretKey);
+    req.user = decoded; 
+    next(); 
+  } catch (err) {
+    return res.status(401).json({ message: 'Invalid or expired token' });
+  }
+}
+const customerrouter = require('./routes/customer')
+app.use('/customer',authenticateToken, customerrouter)
+
+
 
 const reviewrouter = require('./routes/review')
 app.use('/review',authenticateToken, reviewrouter)

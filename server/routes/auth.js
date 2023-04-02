@@ -4,17 +4,17 @@ const customerschema = require('../models/customersc')
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 var bcrypt = require('bcryptjs');
-const secretKey = '12abcd342hkjsd'; // You should store the secret key securely and not expose it in your code
 
-// Function to generate JWT token
+
+const secretKey = '12abcd342hkjsd';
+
 function generateToken(user) {
   const payload = {
     userId: user._id,
     email: user.email
-    // Add any other user data you want to include in the token payload
   };
   const options = {
-    expiresIn: '1d' // Set the expiration time for the token
+    expiresIn: '1d'
   };
   return jwt.sign(payload, secretKey, options);
 }
@@ -63,19 +63,19 @@ router.post("/", async (req, res) => {
     }
 })
 
+
 router.post("/forget-password", async (req, res) => {
     email = req.body.email;
-    console.log(req.body.email)
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'Your Email',
-          pass: 'Your Password%%%%%%%%%'
+            user: 'YOUR EMAIL',
+            pass: 'YOUR PASSWORD'
         }
       });
     
       const mailOptions = {
-        from: 'Your Email',
+        from: 'YOUR EMAIL',
         to: email,
         subject: 'Reset your password',
         html: `<p>Please click <a href="http://localhost:3000/forgetpassword/${email}">here</a> to reset your password.</p>`
@@ -83,12 +83,12 @@ router.post("/forget-password", async (req, res) => {
     
         transporter.sendMail(mailOptions, function(err, data) {
             if(err) {
-                res.send(err);
+                console.log(err);
+                res.send('No Internet')
             } else {
                 res.send('Email sent successfully');
             }
         });
-    
 });
 
 function generatehash (password) {
@@ -102,7 +102,7 @@ router.post("/change-password", async (req, res) => {
         { $set: { password: pass } },
         { useFindAndModify: false }, function (err, result) {
             if (err) {
-                return res.status(400).json({ error: err })
+                return res.send("Internet Is Slow!!")
             }
             return res.send("Password Change Successfully!!")
         }

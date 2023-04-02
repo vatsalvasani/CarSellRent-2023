@@ -66,12 +66,11 @@ const RentCar = () => {
         formData.append('image2' , image2)
         formData.append('image3' , image3)
         formData.append('image4' , image4)
-        // console.log(formData)
+        console.log(formData)
 
        axios.post('http://localhost:8080/rentcar/',formData,{
         headers: {
-          'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*",
         },
     }).then((res) => {
            alert("Successfully Complete The Task!"); 
@@ -243,7 +242,7 @@ const RentCar = () => {
                 <button className="contact__btn" type="submit" 
                 onClick={AddCar}
                 >
-                  Publish For Sold
+                  Publish For Rent
                 </button>
               </Form>
             {/* </Col>

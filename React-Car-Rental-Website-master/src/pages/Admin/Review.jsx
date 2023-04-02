@@ -36,39 +36,39 @@ let tasks = [];
       console.log(result)
       return Promise.resolve(tasks);
     },
-    update: async (data) => {
-      const task = tasks.find(t => t._id === data._id);
-      console.log(task)
-      task.customername = data.customername;
-      task.email = data.email;
-      task.review = data.review;
-    await axios.put("http://localhost:8080/review/"+data._id,task,{
-      headers: {
-        'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-  })
-        .then((res)=>
-        {    
-            console.log(res)      
-        });
-        service.fetchItems();   
-      return Promise.resolve(tasks);
-    },
-    delete: async(data) => {
-        await axios.delete("http://localhost:8080/review/"+data._id,{
-          headers: {
-            'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
-            'Content-Type': 'application/json',
-          },
-      })
-        .then((res)=>
-        {    
-            console.log(res)      
-        });
-      service.fetchItems();   
-      return Promise.resolve(tasks);
-    },
+  //   update: async (data) => {
+  //     const task = tasks.find(t => t._id === data._id);
+  //     console.log(task)
+  //     task.customername = data.customername;
+  //     task.email = data.email;
+  //     task.review = data.review;
+  //   await axios.put("http://localhost:8080/review/"+data._id,task,{
+  //     headers: {
+  //       'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  // })
+  //       .then((res)=>
+  //       {    
+  //           console.log(res)      
+  //       });
+  //       service.fetchItems();   
+  //     return Promise.resolve(tasks);
+  //   },
+  //   delete: async(data) => {
+  //       await axios.delete("http://localhost:8080/review/"+data._id,{
+  //         headers: {
+  //           'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+  //           'Content-Type': 'application/json',
+  //         },
+  //     })
+  //       .then((res)=>
+  //       {    
+  //           console.log(res)      
+  //       });
+  //     service.fetchItems();   
+  //     return Promise.resolve(tasks);
+  //   },
   };
 
 const styles = {
@@ -113,7 +113,7 @@ const Admin_Review = () => (
 
       </Fields>
 
-      <UpdateForm
+      {/* <UpdateForm
         title="Review Update Process"
         message="Update task"
         trigger="Update"
@@ -142,7 +142,7 @@ const Admin_Review = () => (
           }
           return errors;
         }}
-      />
+      /> */}
     </CRUDTable>
     <Footer></Footer>
   </div>
