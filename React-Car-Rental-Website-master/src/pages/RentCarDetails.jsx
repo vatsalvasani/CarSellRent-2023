@@ -33,7 +33,7 @@ function RentCarDetails (){
   const [singleCarItem,setSingleCarItem] = useState();
 
   useEffect(()=>{
-    axios.get("http://localhost:8080/rentcar/car/"+id,{
+    axios.get(`${process.env.REACT_APP_API_URL}/rentcar/car/`+id,{
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
         'Content-Type': 'application/json',
@@ -74,18 +74,18 @@ function RentCarDetails (){
         <Container>
           <Row>
             <Col lg="6">
-              <img src={`http://localhost:8080/${image1}`} alt="" className="w-100" />
+              <img src={`${process.env.REACT_APP_API_URL}/${image1}`} alt="" className="w-100" />
             </Col>
             <Col lg="6">
-              <img src={`http://localhost:8080/${image2}`} alt="" className="w-100" />
+              <img src={`${process.env.REACT_APP_API_URL}/${image2}`} alt="" className="w-100" />
             </Col>
             </Row>
             <Row>
             <Col lg="6">
-              <img src={`http://localhost:8080/${image3}`} alt="" className="w-100" />
+              <img src={`${process.env.REACT_APP_API_URL}/${image3}`} alt="" className="w-100" />
             </Col>
             <Col lg="6">
-              <img src={`http://localhost:8080/${image4}`} alt="" className="w-100" />
+              <img src={`${process.env.REACT_APP_API_URL}/${image4}`} alt="" className="w-100" />
             </Col>
             </Row>
             <Row>

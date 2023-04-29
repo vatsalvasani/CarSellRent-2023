@@ -68,7 +68,7 @@ const RentCar = () => {
         formData.append('image4' , image4)
         console.log(formData)
 
-       axios.post('http://localhost:8080/rentcar/',formData,{
+       axios.post(`${process.env.REACT_APP_API_URL}/rentcar/`,formData,{
         headers: {
           "Access-Control-Allow-Origin": "*",
         },

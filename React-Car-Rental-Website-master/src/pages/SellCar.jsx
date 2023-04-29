@@ -318,7 +318,7 @@ const SellCar = () => {
     formData.append("image4", image4);
     console.log(formData);
     axios
-      .post("http://localhost:8080/sellcar/", formData, {
+      .post(`${process.env.REACT_APP_API_URL}/sellcar/`, formData, {
         headers: {
           "Access-Control-Allow-Origin": "*",
         },

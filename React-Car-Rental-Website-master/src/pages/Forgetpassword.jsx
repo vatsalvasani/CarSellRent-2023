@@ -10,7 +10,7 @@ function ForgetPassword() {
   };
 
   const handleSendEmail = () => {
-    axios.post('http://localhost:8080/auth/forget-password',{ 
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/forget-password`,{ 
   'email' : email,
 })
     .then(res => {

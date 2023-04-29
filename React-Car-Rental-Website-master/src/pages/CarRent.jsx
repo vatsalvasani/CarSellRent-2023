@@ -15,7 +15,7 @@ class CarRent extends React.Component {
     sortBy: "none"
   }
   componentDidMount(){
-    axios.get("http://localhost:8080/rentcar",{
+    axios.get(`${process.env.REACT_APP_API_URL}/rentcar`,{
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
         'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ export const register = async (mydata) => {
     try {
         const res = await axios({
             method: 'post',
-            url: 'http://localhost:8080/auth',
+            url: `${process.env.REACT_APP_API_URL}/auth`,
             data: {
                 name: mydata.rusername,
                 email: mydata.remail,
@@ -30,7 +30,7 @@ export const login = async (mydata) => {
     {
         const res = await axios({
             method: 'post',
-            url: 'http://localhost:8080/auth/Login',
+            url: `${process.env.REACT_APP_API_URL}/auth/Login`,
             data: {
                 email: mydata.lemail,
                 password: mydata.lpassword,
@@ -53,7 +53,7 @@ export const login = async (mydata) => {
     try {
         const res = await axios({
             method: 'post',
-            url: 'http://localhost:8080/auth/Login',
+            url: `${process.env.REACT_APP_API_URL}/auth/Login`,
             data: {
                 email: mydata.lemail,
                 password: mydata.lpassword,

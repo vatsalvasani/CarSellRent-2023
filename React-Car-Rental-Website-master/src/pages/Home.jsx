@@ -23,7 +23,7 @@ const  Home = () => {
   const [journeydate, setJourneydate] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/sellcar",{
+    axios.get(`${process.env.REACT_APP_API_URL}/sellcar`,{
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
               'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const  Home = () => {
       console.log(carData);
     });
 
-    axios.get("http://localhost:8080/rentCar",{
+    axios.get(`${process.env.REACT_APP_API_URL}/rentCar`,{
             headers: {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
               'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const  Home = () => {
   },[]);
   const Search  = async (e) => {
         e.preventDefault();
-        await axios.get("http://localhost:8080/sellcar/"+carName+'/'+fuel_type+'/'+cartype,{
+        await axios.get(`${process.env.REACT_APP_API_URL}/sellcar/`+carName+'/'+fuel_type+'/'+cartype,{
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const  Home = () => {
 
         });
     
-        await axios.get("http://localhost:8080/rentCar/"+carName+'/'+fuel_type+'/'+journeydate+'/'+city+'/'+cartype,{
+        await axios.get(`${process.env.REACT_APP_API_URL}/rentCar/`+carName+'/'+fuel_type+'/'+journeydate+'/'+city+'/'+cartype,{
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json',

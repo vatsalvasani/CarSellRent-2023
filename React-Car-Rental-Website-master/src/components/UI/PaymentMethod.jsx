@@ -12,7 +12,7 @@ import axios from "axios";
 const checkout = async (amount) => {
   const {
     data: { key },
-  } = await axios.get("http://localhost:8080/payment/getkey",{
+  } = await axios.get(`${process.env.REACT_APP_API_URL}/payment/getkey`,{
     headers: {
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
       'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ const checkout = async (amount) => {
 
   const {
     data: { order },
-  } = await axios.post("http://localhost:8080/payment/pay", amount,{
+  } = await axios.post(`${process.env.REACT_APP_API_URL}/payment/pay`, amount,{
     headers: {
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
       'Content-Type': 'application/json',
@@ -36,11 +36,11 @@ const checkout = async (amount) => {
     description: "Transaction",
     image: "https://example.com/your_logo",
     order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    callback_url: "http://localhost:8080/payment/paymentverification",
+    callback_url: `${process.env.REACT_APP_API_URL}/payment/paymentverification`,
     // callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
     prefill: {
-      name: "Gaurav Kumar",
-      email: "gaurav.kumar@example.com",
+      name: "VATSAL VASANI",
+      email: "vatsal@example.com",
       contact: "9016732128",
     },
     notes: {

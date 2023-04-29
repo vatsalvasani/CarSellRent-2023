@@ -20,7 +20,7 @@ let result = [];
 
   const service = {
     fetchItems: async (payload) => {
-        await axios.get("http://localhost:8080/customer/"+sessionStorage.getItem('id'),{
+        await axios.get(`${process.env.REACT_APP_API_URL}/customer/`+sessionStorage.getItem('id'),{
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ let result = [];
       task.mobileno = data.mobileno;
       task.email = data.email;
       task.address = data.address;
-    await axios.put("http://localhost:8080/customer/"+task._id,task,{
+    await axios.put(`${process.env.REACT_APP_API_URL}/customer/`+task._id,task,{
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
         'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ let result = [];
         return Promise.resolve(tasks);
     },
     delete: async(data) => {
-        await axios.delete("http://localhost:8080/customer/"+data._id,{
+        await axios.delete(`${process.env.REACT_APP_API_URL}/customer/`+data._id,{
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json',

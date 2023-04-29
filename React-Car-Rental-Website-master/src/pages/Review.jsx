@@ -38,7 +38,7 @@ const Review = () => {
      alert("Please Provide All Necessary Information");
      return;
     }
-    axios.post('http://localhost:8080/review/',
+    axios.post(`${process.env.REACT_APP_API_URL}/review/`,
     {
       'customer_id' : sessionStorage.getItem('id'),
       'customername' : customername,

@@ -20,7 +20,7 @@ let tasks = [];
 
   const service = {
     fetchItems: async (payload) => {
-        await axios.get("http://localhost:8080/rentcar/",{
+        await axios.get(`${process.env.REACT_APP_API_URL}/rentcar/`,{
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ let tasks = [];
       task.color = data.color;
       task.address = data.address;
       task.price = data.price;
-    await axios.put("http://localhost:8080/rentcar/"+data._id,task,{
+    await axios.put(`${process.env.REACT_APP_API_URL}/rentcar/`+data._id,task,{
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
         'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ let tasks = [];
       return Promise.resolve(tasks);
     },
     delete: async(data) => {
-        await axios.delete("http://localhost:8080/rentcar/"+data._id,{
+        await axios.delete(`${process.env.REACT_APP_API_URL}/rentcar/`+data._id,{
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const BookingForm = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/customer/email', {
+    axios.post(`${process.env.REACT_APP_API_URL}/customer/email`, {
             "firstname": firstname,
             "lastname": lastname,
             "email": email,

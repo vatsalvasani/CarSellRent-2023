@@ -20,7 +20,7 @@ let tasks = [];
 
   const service = {
     fetchItems: async (payload) => {
-        await axios.get("http://localhost:8080/review/",{
+        await axios.get(`${process.env.REACT_APP_API_URL}/review/`,{
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'application/json',

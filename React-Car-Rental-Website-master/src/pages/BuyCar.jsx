@@ -17,7 +17,7 @@ class BuyCar extends React.Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:8080/sellcar",{
+    axios.get(`${process.env.REACT_APP_API_URL}/sellcar`,{
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
         'Content-Type': 'application/json',
