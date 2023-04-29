@@ -186,7 +186,7 @@ const SellCarTable = () => (
       </Fields>
 
       <UpdateForm
-        title="Review Update Process"
+        title="Car Information Update Process"
         message="Update task"
         trigger="Update"
         onSubmit={task => service.update(task)}
@@ -205,7 +205,7 @@ const SellCarTable = () => (
       />
 
       <DeleteForm
-        title="Review Delete Process"
+        title="Car Information Delete Process"
         message="Are you sure you want to delete the task?"
         trigger="Delete"
         onSubmit={task => service.delete(task)}
