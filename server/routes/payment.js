@@ -72,7 +72,7 @@ const razorpayInstance = new Razorpay({
 
 router.post('/pay', async (req, res) => {
     const options = {
-        amount: Number(req.body.amount / 100),
+        amount: Number(req.body.amount),
         currency: "INR",
     };
     try {
