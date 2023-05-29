@@ -1,7 +1,7 @@
 # Car Sell/Rent Application
 -> Step For Start Exploring The Application :-
 
-Step 1 :- Download The Zip File.
+Step 1 :- Go To Master Branch And Download The Zip File.
 
 Step 2 :- Extract The Zip File.
 
