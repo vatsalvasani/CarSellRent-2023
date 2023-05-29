@@ -5,11 +5,11 @@ Step 1 :- Go To Master Branch And Download The Zip File.
 
 Step 2 :- Extract The Zip File.
 
-Step 3 :- Go To Server And React-Website-Main Folder Run Command npm i in Terminal.
+Step 3 :- Go To Server And React-Car-Rental-Website-master Folder Run Command npm i in Terminal.
 
 Step 4 :- Go To Server Folder And Fire Command nodemon app.js.
 
-Step 5 :- Go To React-Website-Main Folder And Fire npm start Command And Start Exploring.
+Step 5 :- Go To React-Car-Rental-Website-master Folder And Fire npm start Command And Start Exploring.
 
 
 Details About Application :-
