@@ -28,23 +28,24 @@ const  Home = () => {
               'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
               'Content-Type': 'application/json',
             },
-        }).then((res) => {
+      }).then((res) => {
       const Carsdata1 = res.data;
       setCarData(Carsdata1);
       console.log(carData);
     });
 
     axios.get(`${process.env.REACT_APP_API_URL}/rentCar`,{
-            headers: {
-              'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
-              'Content-Type': 'application/json',
-            },
-        }).then((res) => {
+      headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
       const Carsdata1 = res.data;
       setCarData1(Carsdata1);
-      console.log(carData1);
     });
   },[]);
+
+  
   const Search  = async (e) => {
         e.preventDefault();
         await axios.get(`${process.env.REACT_APP_API_URL}/sellcar/`+carName+'/'+fuel_type+'/'+cartype,{
@@ -55,7 +56,6 @@ const  Home = () => {
       })
         .then((res)=>
         {
-          console.log(res);
           const Carsdata1 = res.data;
           setCarData(Carsdata1);
 

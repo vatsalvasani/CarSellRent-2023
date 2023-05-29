@@ -3,11 +3,6 @@ const mongoose = require('mongoose')
 
 const paymentsc =new mongoose.Schema(
     {
-        // paymentid:
-        // {
-        //     type: int,
-        //     required:true
-        // },
         carid:
         {
             type: String,

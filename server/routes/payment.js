@@ -72,13 +72,13 @@ const razorpayInstance = new Razorpay({
 
 router.post('/pay', async (req, res) => {
     const options = {
-        amount: Number(req.body.amount),
+        amount: Number(req.body.amount * 100),
         currency: "INR",
     };
     try {
         const order = await razorpayInstance.orders.create(options);
-        console.log(order);
         return res.status(200).json({ order })
+        // console.log(order)
     }
     catch (err) {
         console.log(err);
@@ -98,15 +98,15 @@ router.post('/paymentverification', async (req, res) => {
     const expectedSignature = crypto.createHmac('sha256', process.env.RAZORPAY_API_SECRET)
         .update(body.toString())
         .digest('hex');
-    console.log("sig received ", razorpay_signature);
-    console.log("sig generated ", expectedSignature);
+    // console.log("sig received ", razorpay_signature);
+    // console.log("sig generated ", expectedSignature);
     const isauthentic = expectedSignature === razorpay_signature;
     if (isauthentic) {
         // store in database
     }
     else {
-        console.log("sig received ", razorpay_signature);
-        console.log("sig generated ", expectedSignature);
+        // console.log("sig received ", razorpay_signature);
+        // console.log("sig generated ", expectedSignature);
         res.status(400).json({ success: false, })
     }
 })

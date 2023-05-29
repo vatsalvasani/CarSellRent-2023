@@ -12,14 +12,15 @@ function ChangePassword() {
 
   const handleSendEmail = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/auth/change-password`,{ 
-  'email' : email,
-  'password' : password
-})
+      'email' : email,
+      'password' : password  
+    })
     .then(res => {
       alert(res.data);
     })
     .catch(error => {
       alert("Some Internal Error Try Again!!!");
+      console.log(error);
     });
   };
 

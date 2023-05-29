@@ -66,29 +66,39 @@ router.post("/", async (req, res) => {
 
 router.post("/forget-password", async (req, res) => {
     email = req.body.email;
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'YOUR EMAIL',
-            pass: 'YOUR PASSWORD'
+
+    customerschema.findOne({ email: email }, (err, user) => {
+        if (user==undefined) {
+            res.send("First Register Your self")
         }
-      });
-    
-      const mailOptions = {
-        from: 'YOUR EMAIL',
-        to: email,
-        subject: 'Reset your password',
-        html: `<p>Please click <a href="http://localhost:3000/forgetpassword/${email}">here</a> to reset your password.</p>`
-      };
-    
-        transporter.sendMail(mailOptions, function(err, data) {
-            if(err) {
-                console.log(err);
-                res.send('No Internet')
-            } else {
-                res.send('Email sent successfully');
+        else{
+            console.log("vs")
+            const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'vatsalextra0@gmail.com',
+                pass: 'vwshteyuegnwtmkx'
             }
-        });
+            });
+            
+            const mailOptions = {
+            from: 'vatsalextra0@gmail.com',
+            to: email,
+            subject: 'Reset your password',
+            html: `<p>Please click <a href="${process.env.API_URL}/forgetpassword/${email}">here</a> to reset your password.</p>`
+            };
+            
+            transporter.sendMail(mailOptions, function(err, data) {
+                if(err) {
+                    console.log(err);
+                    res.send('Check Your Internet Connection')
+                } else {
+                    res.send('Email sent successfully');
+                }
+            });
+        }
+    });
+    
 });
 
 function generatehash (password) {

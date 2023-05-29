@@ -5,11 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { TextField, styled, Button } from '@mui/material'
 import { register, login } from '../store/actions/auth';
 import { setAleart } from '../store/actions/alert';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const CssTextField = styled(TextField)({

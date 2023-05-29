@@ -4,8 +4,6 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
-import CarItem from "../components/UI/CarItem";
-import FindCarForm from "../components/UI/FindCarForm";
 import axios from "axios";
 import CarItem1 from "../components/UI/CarItem1";
 class CarRent extends React.Component {
@@ -25,7 +23,6 @@ class CarRent extends React.Component {
     {
       const Carsdata1 = res.data;
       this.setState({carData : Carsdata1});
-      console.log(this.state.carData)
     });
   }
 

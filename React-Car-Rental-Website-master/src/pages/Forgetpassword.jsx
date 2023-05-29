@@ -11,8 +11,7 @@ function ForgetPassword() {
 
   const handleSendEmail = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/auth/forget-password`,{ 
-  'email' : email,
-})
+  'email' : email})
     .then(res => {
         alert(res.data);
     })

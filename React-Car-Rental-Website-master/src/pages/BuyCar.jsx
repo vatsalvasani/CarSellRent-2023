@@ -1,5 +1,3 @@
-
-// React-Car-Rental-Website-master
 import { Container, Row, Col } from "reactstrap";
 import React, { Fragment } from "react";
 import Header from "../components/Header/Header";
@@ -7,7 +5,6 @@ import Footer from "../components/Footer/Footer";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
 import CarItem from "../components/UI/CarItem";
-import FindCarForm from "../components/UI/FindCarForm";
 import axios from "axios";
 
 class BuyCar extends React.Component {

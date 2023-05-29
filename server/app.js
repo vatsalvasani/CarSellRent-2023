@@ -14,13 +14,17 @@ try{
     
     })
 }
-catch(e){console.log(e);}
+catch(e){
+  console.log(e);
+}
 
 app.use(cors());
 
 const authrouter = require('./routes/auth')
 app.use('/auth', authrouter)
+
 app.use('/uploads',express.static('uploads'))
+
 const sellcarrouter = require('./routes/sellcar')
 app.use('/sellcar', sellcarrouter)
 
@@ -59,5 +63,5 @@ app.use('/review',authenticateToken, reviewrouter)
 
 app.listen(8080,()=>
 {
-    console.log("Its Connected To The Port 8080")
+  console.log("Its Connected To The Port 8080")
 })
